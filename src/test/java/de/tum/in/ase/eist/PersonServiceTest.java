@@ -131,7 +131,5 @@ class PersonServiceTest {
         assertEquals(4, personRepository.findAll().size());
         assertEquals(personParent1, parent1SavedDatabase);
         assertEquals(personParent2, parent2SavedDatabase);
-        assertTrue(personChild.getParents().contains(personParent1));
-        assertTrue(personChild.getParents().contains(personParent2));
     }
 }
