@@ -50,4 +50,22 @@ class PersonServiceTest {
 
         assertTrue(personRepository.findAll().isEmpty());
     }
+
+    @Test
+    void testAddParent() {
+//        Create two instances of Person, one acts as a child and one as a parent,
+//        save these objects to the database.
+//        Invoke the method addParent in PersonService.
+//        Verify that all instances of Person have been correctly saved to the database
+//        and that the parent-child relationship has been created only for the first two added parents
+//        (in the database and the returned object of addParent).
+        var person = new Person();
+        person.setFirstName("Max");
+        person.setLastName("Mustermann");
+        person.setBirthday(LocalDate.now());
+
+        personService.save(person);
+
+        assertEquals(1, personRepository.findAll().size());
+    }
 }
