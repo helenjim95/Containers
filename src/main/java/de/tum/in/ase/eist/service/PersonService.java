@@ -54,7 +54,7 @@ public class PersonService {
         // Implement
         Set<Person> parentSets = child.getParents();
         Set<Person> childrenSets = person.getChildren();
-        if (parentSets.size() <= 2) {
+        if (parentSets.size() < 2) {
             childrenSets.add(child);
             person.setChildren(childrenSets);
             return save(person);
