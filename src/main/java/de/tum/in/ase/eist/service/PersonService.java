@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class PersonService {
@@ -38,22 +39,44 @@ public class PersonService {
     }
 
     public Person addParent(Person person, Person parent) {
-        // TODO: Implement
-        return null;
+        // Implement
+        Set<Person> parentSets = person.getParents();
+        if (parentSets.size() < 2) {
+            parentSets.add(parent);
+            person.setParents(parentSets);
+        }
+        return save(person);
     }
 
     public Person addChild(Person person, Person child) {
-        // TODO: Implement
-        return null;
+        // Implement
+        Set<Person> parentSets = child.getParents();
+        Set<Person> childrenSets = person.getChildren();
+        if (parentSets.size() <= 2) {
+            childrenSets.add(child);
+            person.setChildren(childrenSets);
+        }
+        return save(person);
     }
 
     public Person removeParent(Person person, Person parent) {
-        // TODO: Implement
-        return null;
+        // Implement
+        Set<Person> parentSets = person.getParents();
+        if (parentSets.size() > 1) {
+            parentSets.remove(parent);
+            person.setParents(parentSets);
+        }
+        return save(person);
     }
 
     public Person removeChild(Person person, Person child) {
-        // TODO: Implement
-        return null;
+        // Implement
+        Set<Person> parentSets = child.getParents();
+        Set<Person> childrenSets = person.getChildren();
+        if (parentSets.size() > 1) {
+            childrenSets.remove(child);
+            person.setChildren(childrenSets);
+        }
+        return save(person);
     }
 }
