@@ -44,8 +44,10 @@ public class PersonService {
         if (parentSets.size() < 2) {
             parentSets.add(parent);
             person.setParents(parentSets);
+            return save(person);
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "the person already has more than one parent");
         }
-        return save(person);
     }
 
     public Person addChild(Person person, Person child) {
@@ -55,8 +57,10 @@ public class PersonService {
         if (parentSets.size() <= 2) {
             childrenSets.add(child);
             person.setChildren(childrenSets);
+            return save(person);
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "the person already has more than one parent");
         }
-        return save(person);
     }
 
     public Person removeParent(Person person, Person parent) {
@@ -65,8 +69,10 @@ public class PersonService {
         if (parentSets.size() > 1) {
             parentSets.remove(parent);
             person.setParents(parentSets);
+            return save(person);
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "the person has only one parent");
         }
-        return save(person);
     }
 
     public Person removeChild(Person person, Person child) {
@@ -76,7 +82,9 @@ public class PersonService {
         if (parentSets.size() > 1) {
             childrenSets.remove(child);
             person.setChildren(childrenSets);
+            return save(person);
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "the child has only one parent");
         }
-        return save(person);
     }
 }
