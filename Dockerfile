@@ -9,3 +9,4 @@ COPY start.sh /app
 # Make start.sh executable
 # Set the start command
 CMD ./start.sh
+
