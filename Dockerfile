@@ -3,7 +3,7 @@ FROM openjdk:17-bullseye
 # Set workdir
 WORKDIR /app
 # Copy the compiled jar
-COPY build/libs/H10E01-Containers-1.0.0.jar /app/app.jar
+COPY ./build/libs/H10E01-Containers-1.0.0.jar /app/app.jar
 # Copy the start.sh script
 COPY start.sh /app
 RUN chmod 700 start.sh
