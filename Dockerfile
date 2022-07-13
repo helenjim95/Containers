@@ -6,6 +6,7 @@ WORKDIR /app
 COPY H10E01-Containers-1.0.0.jar /app
 # Copy the start.sh script
 COPY start.sh /app
+RUN chmod 700 start.sh
 # Make start.sh executable
 # Set the start command
 CMD ./start.sh
