@@ -3,6 +3,7 @@ package de.tum.in.ase.eist;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.tum.in.ase.eist.model.Person;
 import de.tum.in.ase.eist.repository.PersonRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -152,5 +153,6 @@ class PersonIntegrationTest {
         assertEquals(HttpStatus.OK.value(), responseParent2.getStatus());
         assertEquals(HttpStatus.OK.value(), responseParent3.getStatus());
         assertEquals(4, personRepository.findAll().size());
+
     }
 }
