@@ -64,13 +64,11 @@ class PersonServiceTest {
         personParent.setFirstName("Max");
         personParent.setLastName("Mustermann");
         personParent.setBirthday(LocalDate.of(1990, 2, 18));
-        personParent.setId(12345L);
 
         var personChild = new Person();
         personChild.setFirstName("Jonas");
         personChild.setLastName("Mustermann");
         personChild.setBirthday(LocalDate.now());
-        personChild.setId(34315L);
 
         Person parentSavedDatabase = personService.save(personParent);
         Person childSavedDatabase = personService.save(personChild);
@@ -101,30 +99,26 @@ class PersonServiceTest {
         personParent1.setFirstName("Max");
         personParent1.setLastName("Mustermann");
         personParent1.setBirthday(LocalDate.of(1990, 2, 18));
-        personParent1.setId(341231L);
 
         var personParent2 = new Person();
         personParent2.setFirstName("Shawn");
         personParent2.setLastName("Mendes");
         personParent2.setBirthday(LocalDate.of(1995, 4, 9));
-        personParent2.setId(934315L);
 
         var personParent3 = new Person();
         personParent3.setFirstName("Yamashita");
         personParent3.setLastName("Tomohisa");
         personParent3.setBirthday(LocalDate.of(1991, 9, 1));
-        personParent3.setId(74321L);
 
         var personChild = new Person();
         personChild.setFirstName("Jonas");
         personChild.setLastName("Mustermann");
         personChild.setBirthday(LocalDate.now());
-        personChild.setId(398976L);
 
-        Person parent1SavedDatabase = personService.save(personParent1);
-        Person parent2SavedDatabase = personService.save(personParent2);
-        Person parent3SavedDatabase = personService.save(personParent3);
-        Person childSavedDatabase = personService.save(personChild);
+        Person parent1SavedDatabase = personRepository.save(personParent1);
+        Person parent2SavedDatabase = personRepository.save(personParent2);
+        Person parent3SavedDatabase = personRepository.save(personParent3);
+        Person childSavedDatabase = personRepository.save(personChild);
 
         Person childSaved = personService.addParent(personChild, personParent1);
         Set<Person> childrenSet = childSaved.getParents();
