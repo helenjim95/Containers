@@ -3,7 +3,6 @@ package de.tum.in.ase.eist;
 import de.tum.in.ase.eist.model.Person;
 import de.tum.in.ase.eist.repository.PersonRepository;
 import de.tum.in.ase.eist.service.PersonService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -133,6 +132,6 @@ class PersonServiceTest {
         assertEquals(4, personRepository.findAll().size());
         assertTrue(personParent1.equals(parent1SavedDatabase));
         assertTrue(personParent2.equals(parent2SavedDatabase));
-        assertThrows(BadRequestAlertException.class, () -> personService.addParent(personChild, personParent3));
+        assertThrows(Exception.class, () -> personService.addParent(personChild, personParent3));
     }
 }
